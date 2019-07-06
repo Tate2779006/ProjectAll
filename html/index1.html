@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap" rel="stylesheet">
+	<title>TestScroll</title>
+</head>
+<body>
+	<div class="text">0</div>
+	<div class="light"></div>
+	<div class="dub">
+		<div class="block sc_1"></div>
+		<div class="block sc_2"></div>
+		<div class="block sc_3"></div>
+		<div class="block sc_4"></div>
+		<div class="block sc_5"></div>
+		<div class="block sc_6"></div>
+		<div class="block sc_7"></div>
+		<div class="block sc_8"></div>
+		<div class="block sc_9"></div>
+		<div class="block sc_10"></div>
+		<div class="block sc_11"></div>
+		<div class="block sc_12"></div>
+		<div class="block sc_13"></div>
+		<div class="block sc_14"></div>
+		<div class="block sc_15"></div>
+	</div>
+	<style>
+		body, 
+		html {
+			margin: 0;
+			padding: 0;
+		}
+
+		html {
+			overflow-x: hidden;
+		}
+
+		.light {
+			position: fixed;
+			transition: 1s;
+			width: 100%;
+			height: 420px;
+			top: 100px;
+		}
+
+		.go {
+			background: rgba(0,0,255,0.5);
+		}
+
+		.dub {
+			position: relative;
+			left: -70px;
+		}
+
+		.text {
+			font-family: 'Rubik Mono One', sans-serif;
+			position: fixed;
+            font-size: 26px;
+            width: 120px;
+            height: 30px;
+            line-height: 30px;
+            border: 3px solid black;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20%;
+		}
+
+		.block {
+			position: absolute;
+			font-family: 'Rubik Mono One', sans-serif;
+			text-align: center;
+			border: 2px solid black;
+			font-size: 50px;
+			background: grey;
+		}
+
+		@keyframes sd{
+
+			50% {
+				box-shadow: 0px 0px 10px 5px red;
+			}
+		}
+
+		.sc_1 {
+			width: 50px;
+			height: 150px;
+			left: 198px;
+			top: 800px;
+		}
+		.sc_2 {
+			width: 200px;
+			height: 50px;
+			top: 2000px;
+			left: 500px;
+		}
+		.sc_3 {
+			width: 120px;
+			height: 50px;
+			top: 1500px;
+            left: 250px;
+		}
+		.sc_4 {
+			width: 50px;
+			height: 220px;
+			top: 2500px;
+            left: 198px;
+		}
+		.sc_5 {
+			width: 50px;
+			height: 370px;
+			top: 3000px;
+            left: 850px;
+            transform: rotate(170deg);
+		}
+
+		.sc_6 {
+			width: 50px;
+			height: 370px;
+			top: 3500px;
+            left: 930px;
+            transform: rotate(-170deg);
+		}
+
+		.sc_7 {
+			width: 50px;
+			height: 370px;
+			top: 4000px;
+            left: 1000px;
+			transform: rotate(170deg);
+		}
+
+		.sc_8 {
+			width: 50px;
+			height: 375px;
+			top: 4500px;
+            left: 372px;
+		}
+
+		.sc_9 {
+			width: 50px;
+			height: 370px;
+			top: 5000px;
+            left: 780px;
+            transform: rotate(-170deg);
+		}
+
+		.sc_10 {
+			width: 130px;
+			height: 50px;
+			top: 5500px;
+            left: 1200px;
+		}
+
+		.sc_11 {
+			width: 50px;
+			height: 325px;
+			top: 6000px;
+            left: 578px;
+		}
+
+		.sc_12 {
+			width: 50px;
+			height: 380px;
+			top: 6500px;
+            left: 1150px;
+		}
+
+		.sc_13 {
+			width: 1450px;
+			height: 10px;
+			top: 7000px;
+            left: 1500px;
+            background: black;
+		}
+
+		.sc_14 {
+			width: 1450px;
+			height: 10px;
+			top: 6500px;
+            left: 1500px;
+            background: black;
+		}
+
+		.sc_15 {
+			width: 1px;
+			height: 1px;
+			top: 9500px;
+            border: 0px solid black;
+		}
+
+	</style>
+	<script>
+		let light = document.querySelector('.light');
+		 const optionElement = {
+	        	nameObj: ['.sc_1','.sc_3','.sc_2','.sc_4','.sc_5','.sc_6','.sc_7','.sc_8','.sc_9','.sc_10','.sc_11','.sc_12','.sc_13','.sc_14',],
+	        	stopTop: [660, 1327, 1660, 2160, 2880, 3380, 3880, 4380, 4880, 5070, 5828, 6370, 6578, 3200],
+	        	marTop: [120, 272,120,272,120,120,120,120,120, 450, 172, 120, 520, 90],
+	        	addAnimation: [false, false, false, false, false, false, false, false, false, false, false, false, true, true],
+	        	stopLeft: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8020, 4650]
+	        }
+        
+
+        window.onscroll = function () {
+        	let scrollNow = document.documentElement.scrollTop;
+			let tablo = document.querySelector('.text');
+        	tablo.innerHTML = scrollNow;
+        	if(scrollNow >= 8390){
+ 				light.classList.add("go");
+        	}else{
+        		light.classList.remove("go");
+        	}
+
+	        optionElement.nameObj.forEach((item, index) => {
+	        	const nameObj = item;
+	        	const stopTop = optionElement.stopTop[index];
+	        	const marTop = optionElement.marTop[index];
+	        	const addAnimation = optionElement.addAnimation[index];
+	        	const stopLeft = optionElement.stopLeft[index];
+
+	        	stopElement(
+	        		nameObj,
+	        		stopTop,
+	        		marTop,
+	        		addAnimation,
+	        		stopLeft,
+	        	);
+	        });
+
+            // for (var i = 0; i < optionElement.stopTop.length; i++) {
+            // 	stopElement(optionElement.nameObj[i], optionElement.stopTop[i], optionElement.marTop[i], optionElement.addAnimation[i], optionElement.stopLeft[i],)
+            // }
+        }
+
+
+		function stopElement (element, stopPositionScrollTop, marginTop, LeftAnimation, stopPositionScrollLeft) {
+			let object = document.querySelector(element);
+			let scrollNow = document.documentElement.scrollTop;
+			let position = getComputedStyle(object);
+
+             if(scrollNow >= stopPositionScrollTop) {
+				object.style.top = marginTop + scrollNow + "px";
+             }else{	
+				object.style.top = position.top + "px";
+             };
+
+             if(LeftAnimation && stopPositionScrollTop <= scrollNow) {
+             	let changePosition = stopPositionScrollTop - scrollNow;
+             	let change = 1500 + changePosition;
+             	if (scrollNow <= stopPositionScrollLeft) {
+             		object.style.left = change + "px";
+             	}else {
+             		object.style.left = "0px";
+             	}
+             	console.log(change);
+             }
+		}
+
+
+
+
+
+  //       function freeElement (element) {
+  //       	element.state = false;
+
+  //       	if (!element.posY) {
+  //       		const styleElement = getComputedStyle(element);
+  //       		element.posY = styleElement.top;
+  //       	}
+
+		// 	element.style.position = "absolute";
+  //       	element.style.top = element.posY;
+        	
+		// }
+  //       function fixedElement (element) {
+  //       	if (!element.state) element.state = true;	
+  //       	else return;
+
+  //       	console.log(element.getBoundingClientRect().top)
+
+  //       	element.style.position = "fixed";
+  //       	element.style.top = element.posYAfterScroll	 + "px";
+  //       }
+
+	</script>
+</body>
+</html>
