@@ -193,6 +193,14 @@
 	</style>
 	<script>
 		let light = document.querySelector('.light');
+		 const optionElement = {
+	        	nameObj: ['.sc_1','.sc_3','.sc_2','.sc_4','.sc_5','.sc_6','.sc_7','.sc_8','.sc_9','.sc_10','.sc_11','.sc_12','.sc_13','.sc_14',],
+	        	stopTop: [660, 1327, 1660, 2160, 2880, 3380, 3880, 4380, 4880, 5070, 5828, 6370, 6578, 3200],
+	        	marTop: [120, 272,120,272,120,120,120,120,120, 450, 172, 120, 520, 90],
+	        	addAnimation: [false, false, false, false, false, false, false, false, false, false, false, false, true, true],
+	        	stopLeft: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8020, 4650]
+	        }
+        
 
         window.onscroll = function () {
         	let scrollNow = document.documentElement.scrollTop;
@@ -203,33 +211,26 @@
         	}else{
         		light.classList.remove("go");
         	}
-			// stopElement ('.sc_1', 660, 120, false, 0);
-			// stopElement ('.sc_3', 1327, 272, false, 0);
-			// stopElement ('.sc_2', 1660, 120, false, 0);
-			// stopElement ('.sc_4', 2160, 272, false, 0);
-			// stopElement ('.sc_5', 2880, 120, false, 0);
-			// stopElement ('.sc_6', 3380, 120, false, 0);
-			// stopElement ('.sc_7', 3880, 120, false, 0);
-			// stopElement ('.sc_8', 4380, 120, false, 0);
-			// stopElement ('.sc_9', 4880, 120, false, 0);
-			// stopElement ('.sc_10', 5070, 450, false, 0);
-			// stopElement ('.sc_11', 5828, 172, false, 0);
-			// stopElement ('.sc_12', 6370, 120, false, 0);
-			// stopElement ('.sc_13', 6578, 520, true, 8020);
-			// stopElement ('.sc_14', 3200, 90, true, 4650);
-            
-             const optionElement = {
-		        	nameObj: ['.sc_1','.sc_3','.sc_2','.sc_4','.sc_5','.sc_6','.sc_7','.sc_8','.sc_9','.sc_10','.sc_11','.sc_12','.sc_13','.sc_14',],
-		        	stopTop: [660, 1327, 1660, 2160, 2880, 3380, 3880, 4380, 4880, 5070, 5828, 6370, 6578, 3200],
-		        	marTop: [120, 272,120,272,120,120,120,120,120, 450, 172, 120, 520, 90],
-		        	addAnimation: [false, false, false, false, false, false, false, false, false, false, false, false, true, true],
-		        	stopLeft: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8020, 4650]
-		        }
-             
 
-                for (var i = 0; i < optionElement.stopTop.length; i++) {
-                	stopElement(optionElement.nameObj[i], optionElement.stopTop[i], optionElement.marTop[i], optionElement.addAnimation[i], optionElement.stopLeft[i],)
-                }
+	        optionElement.nameObj.forEach((item, index) => {
+	        	const nameObj = item;
+	        	const stopTop = optionElement.stopTop[index];
+	        	const marTop = optionElement.marTop[index];
+	        	const addAnimation = optionElement.addAnimation[index];
+	        	const stopLeft = optionElement.stopLeft[index];
+
+	        	stopElement(
+	        		nameObj,
+	        		stopTop,
+	        		marTop,
+	        		addAnimation,
+	        		stopLeft,
+	        	);
+	        });
+
+            // for (var i = 0; i < optionElement.stopTop.length; i++) {
+            // 	stopElement(optionElement.nameObj[i], optionElement.stopTop[i], optionElement.marTop[i], optionElement.addAnimation[i], optionElement.stopLeft[i],)
+            // }
         }
 
 
